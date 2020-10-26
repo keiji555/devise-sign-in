@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: :index
+
   def index
     @items = Item.all
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
@@ -15,7 +16,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price)  do
+    params.require(:item).permit(:name, :price)
   end
-end
 end
